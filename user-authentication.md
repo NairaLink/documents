@@ -72,6 +72,11 @@ PATCH /v1/resetpassword/:token -> this endpoint reset the user's password
 ## Update Password
 
 PATCH /v1/updatepassword -> this endpoint update the user's password
+Data sent along with the request:
+
+- email
+- password
+- passwordConfirm
 
 - On successful (Response)
 
