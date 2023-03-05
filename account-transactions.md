@@ -142,6 +142,16 @@ This endpoint creates an unfulfilled transaction row in the transaction table
     - transaction id as a reference to paystack
     - currency (NGN)
 
+##### Detailed explaination
+- The frontend makes a call to this endpoint with the account id about to be funded
+- This endpoint generated a transaction reference id, then writes this transacction reference id to the transactions table with a default status of `pending`. It then returns the user's email, the transaction reference id to the frontend
+- The frontend collects the amount the user wants to fund from the user.
+- Now, with the `amount`, `transaction reference id` and `user email`, a constant callback function is left.
+- Here is the callback function flow
+    - When paystack verifies the transaction it should send a `GET` request to this endpoint `v1/account/fund/verify?reference={?}`
+    - This endpoint checks the transaction table and if it finds the transaction reference, it sends a `200` status code else 404
+    - With a `200` confirmation paystack sends a `POST` request to `v1/account/fund/verify`. This endpoint then updates the transaction and account with the transaction response data from paystack.
+
 ### GET & POST funding verification
 - **/v1/account/fund/verify**
 
