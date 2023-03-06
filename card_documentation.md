@@ -8,10 +8,10 @@ This token will have the Account ID
 Snippets of card endpoints
 * All endpoints return success if there are no errors, otherwise
 
-{"resource": "name_of_the_resource",
- "status": "failed",
- "message" "error_message"
-}
+	{"resource": "name_of_the_resource",
+ 	 "status": "failed",
+ 	 "message" "error_message"
+	}
 
 ### CREATE A VIRTUAL CARD
 - **POST /v1/card**
@@ -24,16 +24,15 @@ Snippets of card endpoints
 | name_on_card (str) | (required) _delimited by whitespace_ |
 | PIN (str) | (required) _four digits_ |
 
-* RESPONSE DATA
-
-{"resource": "create_virtual_card",
- "status" : "success",
- "data" : {"card_id": "", "card_brand": "VISA", "card_currency": "NGN",
-	   "card_number": "", "name_on_card": "", "expiry_month": "",
-	   "expiry_year": "", "cvv": "", "PIN": "", "status": "inactive",
-	   "balance": "0.00", "date_created": <datetime>, "last_updated": <datetime>
-	  }
-}
+RESPONSE DATA
+	{"resource": "create_virtual_card",
+ 	 "status" : "success",
+ 	 "data" : {"card_id": "", "card_brand": "VISA", "card_currency": "NGN",
+	   	   "card_number": "", "name_on_card": "", "expiry_month": "",
+	   	   "expiry_year": "", "cvv": "", "PIN": "", "status": "inactive",
+	   	   "balance": "0.00", "date_created": <datetime>, "last_updated": <datetime>
+	  	  }
+	}
 
 ### List all virtual cards under an account
 - ** GET /v1/card/
@@ -43,36 +42,35 @@ Snippets of card endpoints
 | -----------   | ---------------------- |
 | card_currency (str) | (optional) NGN, USD |
 
-* RESPONSE DATA
-
-{"resource": "list_virtual_card",
- "status" : "success",
- "data" : [{"card_id": "", "card_brand": "VISA", "card_currency": "NGN",
-           "card_number": "", "name_on_card": "", "expiry_month": "",
-           "expiry_year": "", "cvv": "", "PIN": "", "status": "inactive",
-           "balance": "0.00", "date_created": <datetime>, "last_updated": <datetime>
-           },
+RESPONSE DATA
+	{"resource": "list_virtual_card",
+ 	 "status" : "success",
+ 	 "data" : [{"card_id": "", "card_brand": "VISA", "card_currency": "NGN",
+           	    "card_number": "", "name_on_card": "", "expiry_month": "",
+           	    "expiry_year": "", "cvv": "", "PIN": "", "status": "inactive",
+           	    "balance": "0.00", "date_created": <datetime>, "last_updated": <datetime>
+           	   },
  
-	   {"card_id": "", "card_brand": "VISA", "card_currency": "NGN",
-           "card_number": "", "name_on_card": "", "expiry_month": "",
-           "expiry_year": "", "cvv": "", "PIN": "", "status": "inactive",
-           "balance": "0.00", "date_created": <datetime>, "last_updated": <datetime>
-           }]
-}
+	   	   {"card_id": "", "card_brand": "VISA", "card_currency": "NGN",
+           	    "card_number": "", "name_on_card": "", "expiry_month": "",
+           	    "expiry_year": "", "cvv": "", "PIN": "", "status": "inactive",
+           	    "balance": "0.00", "date_created": <datetime>, "last_updated": <datetime>
+           	   }]
+	}
 
 ### List a virtual card details
-- **GET /v1/card/:card_id**
+- **GET /v1/card/:id**
 * This endpoint retrieves the details of a virtual card with card_id specified
 
-* RESPONSE DATA
-{"resource": "get_virtual_card",
- "status" : "success",
- "data" : {"card_id": "", "card_brand": "VISA", "card_currency": "NGN",
-           "card_number": "", "name_on_card": "", "expiry_month": "",
-           "expiry_year": "", "cvv": "", "PIN": "", "status": "inactive",
-           "balance": "0.00", "date_created": <datetime>, "last_updated": <datetime>
-          }
-}
+RESPONSE DATA
+	{"resource": "get_virtual_card",
+ 	 "status" : "success",
+ 	 "data" : {"card_id": "", "card_brand": "VISA", "card_currency": "NGN",
+           	   "card_number": "", "name_on_card": "", "expiry_month": "",
+                   "expiry_year": "", "cvv": "", "PIN": "", "status": "inactive",
+           	   "balance": "0.00", "date_created": <datetime>, "last_updated": <datetime>
+          	  }
+	}
 
 ### UPDATE virtual card details
 To block/unblock a card
@@ -84,14 +82,13 @@ To block/unblock a card
 | card_id (str) | (required) |
 | status (str) | (required) |
 
-* RESPONSE DATA
-
-{"resource": "change_virtual_card_status",
- "status" : "success",
- "data" : {"card_id": "", "status": "new_status",
-           "date_created": <datetime>, "last_updated": <datetime>
-          }
-}
+RESPONSE DATA
+	{"resource": "change_virtual_card_status",
+ 	 "status" : "success",
+ 	 "data" : {"card_id": "", "status": "new_status",
+           	   "date_created": <datetime>, "last_updated": <datetime>
+          	  }
+	}
 
 To change card PIN
 - **PUT /v1/card/**
@@ -102,14 +99,13 @@ To change card PIN
 | card_id (str) | (required) |
 | PIN (str) | (required) |
 
-* RESPONSE DATA
-
-{"resource": "change_virtual_card_PIN",
- "status" : "success",
- "data" : {"card_id": "", "PIN": "new_PIN",
-           "date_created": <datetime>, "last_updated": <datetime>
-          }
-}
+RESPONSE DATA
+	{"resource": "change_virtual_card_PIN",
+ 	 "status" : "success",
+ 	 "data" : {"card_id": "", "PIN": "new_PIN",
+           	   "date_created": <datetime>, "last_updated": <datetime>
+          	  }
+	}
 
 ### DELETE a virtual card
 To delete a card
@@ -120,14 +116,13 @@ This endpoint deletes a card and changes its status to terminated
 | -----------   | ---------------------- |
 | card_id (str) | (required) |
 
-* RESPONSE DATA
-
-{"resource": "delete_virtual_card",
- "status" : "success",
- "data" : {"card_id": "", "status": "terminated",
-           "date_created": <datetime>, "last_updated": <datetime>
-          }
-}
+RESPONSE DATA
+	{"resource": "delete_virtual_card",
+ 	 "status" : "success",
+ 	 "data" : {"card_id": "", "status": "terminated",
+           	   "date_created": <datetime>, "last_updated": <datetime>
+          	  }
+	}
 
 ## CARD TRANSACTIONS
 Snippet of card transactions endpoints
@@ -143,15 +138,14 @@ This endpoint funds a virtual card from a nairalink account.
 | currency (str) | (required) NGN, USD |
 | narration (str) | (optional) |
 
-* RESPONSE DATA
-
-{"resource": "fund_virtual_card",
- "status" : "success",
- "data" : {"transaction_id": "", "card_id": "", "amount": "amount", "narration": "",
-	   "type": "credit", "currency: "NGN", "datetime_of_transaction": <datetime>
-	   "status": ""
-          }
-}
+RESPONSE DATA
+	{"resource": "fund_virtual_card",
+ 	 "status" : "success",
+ 	 "data" : {"transaction_id": "", "card_id": "", "amount": "amount", "narration": "",
+	   	   "type": "credit", "currency: "NGN", "datetime_of_transaction": <datetime>
+	   	   "status": ""
+          	  }
+	}
 
 ### GET transactions on a virtual_card filtered by (currency/type/status)
 - **GET /v1/card/transactions/**
@@ -166,24 +160,22 @@ Otherwise, it returns all transactions done a particular virtual card
 | status (str) | (optional) either failed or successful transactions |
 | limit_datetime (datetime) | (optional) datetime to limit the search (DD-MM-YYYY HH:MM:SS) |
 
-* RESPONSE DATA
-
-{"resource": "fund_virtual_card",
- "status" : "success",
- "data" : [{"transaction_id": "", "card_id": "", "amount": "amount",
-           "type": "debit", "currency: "NGN", "narration": "",
-           "datetime_of_transaction": <datetime>, "status": "successful"
-          },
-	  {"transaction_id": "", "card_id": "", "amount": "amount",
-           "type": "credit", "currency: "NGN", "narration": "",
-           "datetime_of_transaction": <datetime>, "status": "failed"
-          },
-	  {"transaction_id": "", "card_id": "", "amount": "amount",
-           "type": "credit", "currency: "NGN", "narration": "",
-           "datetime_of_transaction": <datetime>, "status": "successful"
-          }]
-}
-
+RESPONSE DATA
+	{"resource": "fund_virtual_card",
+ 	 "status" : "success",
+ 	 "data" : [{"transaction_id": "", "card_id": "", "amount": "amount",
+           	    "type": "debit", "currency: "NGN", "narration": "",
+           	    "datetime_of_transaction": <datetime>, "status": "successful"
+          	   },
+	  	   {"transaction_id": "", "card_id": "", "amount": "amount",
+           	    "type": "credit", "currency: "NGN", "narration": "",
+           	    "datetime_of_transaction": <datetime>, "status": "failed"
+          	   },
+	  	   {"transaction_id": "", "card_id": "", "amount": "amount",
+           	    "type": "credit", "currency: "NGN", "narration": "",
+           	    "datetime_of_transaction": <datetime>, "status": "successful"
+          	   }]
+	}
 
 
 ## CARD TABLE
