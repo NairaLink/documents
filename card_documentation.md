@@ -6,13 +6,13 @@ This token will have the Account ID
 
 ## CARD ENDPOINTS
 Snippets of card endpoints
-* All endpoints return success if there are no errors, otherwise
-
+* All endpoints return success if there are no errors, otherwise:
+```json
 	{"resource": "name_of_the_resource",
  	 "status": "failed",
  	 "message" "error_message"
 	}
-
+```
 ### CREATE A VIRTUAL CARD
 - **POST /v1/card**
 * This endpoint creates a new virtual card
@@ -25,6 +25,7 @@ Snippets of card endpoints
 | PIN (str) | (required) _four digits_ |
 
 RESPONSE DATA
+```json
 	{"resource": "create_virtual_card",
  	 "status" : "success",
  	 "data" : {"card_id": "", "card_brand": "VISA", "card_currency": "NGN",
@@ -33,7 +34,7 @@ RESPONSE DATA
 	   	   "balance": "0.00", "date_created": <datetime>, "last_updated": <datetime>
 	  	  }
 	}
-
+```
 ### List all virtual cards under an account
 - ** GET /v1/card/
 * This endpoint gets all virtual cards registered under an account, [] if otherwise
@@ -43,6 +44,7 @@ RESPONSE DATA
 | card_currency (str) | (optional) NGN, USD |
 
 RESPONSE DATA
+```json
 	{"resource": "list_virtual_card",
  	 "status" : "success",
  	 "data" : [{"card_id": "", "card_brand": "VISA", "card_currency": "NGN",
@@ -57,12 +59,13 @@ RESPONSE DATA
            	    "balance": "0.00", "date_created": <datetime>, "last_updated": <datetime>
            	   }]
 	}
-
+```
 ### List a virtual card details
 - **GET /v1/card/:id**
 * This endpoint retrieves the details of a virtual card with card_id specified
 
 RESPONSE DATA
+```json
 	{"resource": "get_virtual_card",
  	 "status" : "success",
  	 "data" : {"card_id": "", "card_brand": "VISA", "card_currency": "NGN",
@@ -71,7 +74,7 @@ RESPONSE DATA
            	   "balance": "0.00", "date_created": <datetime>, "last_updated": <datetime>
           	  }
 	}
-
+```
 ### UPDATE virtual card details
 To block/unblock a card
 - **PUT /v1/card/**
@@ -83,13 +86,14 @@ To block/unblock a card
 | status (str) | (required) |
 
 RESPONSE DATA
+```json
 	{"resource": "change_virtual_card_status",
  	 "status" : "success",
  	 "data" : {"card_id": "", "status": "new_status",
            	   "date_created": <datetime>, "last_updated": <datetime>
           	  }
 	}
-
+```
 To change card PIN
 - **PUT /v1/card/**
 * This endpoint changes the PIN of a virtual card
@@ -100,13 +104,14 @@ To change card PIN
 | PIN (str) | (required) |
 
 RESPONSE DATA
+```json
 	{"resource": "change_virtual_card_PIN",
  	 "status" : "success",
  	 "data" : {"card_id": "", "PIN": "new_PIN",
            	   "date_created": <datetime>, "last_updated": <datetime>
           	  }
 	}
-
+```
 ### DELETE a virtual card
 To delete a card
 - **DELETE /v1/card/:card_id**
@@ -117,13 +122,14 @@ This endpoint deletes a card and changes its status to terminated
 | card_id (str) | (required) |
 
 RESPONSE DATA
+```json
 	{"resource": "delete_virtual_card",
  	 "status" : "success",
  	 "data" : {"card_id": "", "status": "terminated",
            	   "date_created": <datetime>, "last_updated": <datetime>
           	  }
 	}
-
+```
 ## CARD TRANSACTIONS
 Snippet of card transactions endpoints
 
@@ -139,6 +145,7 @@ This endpoint funds a virtual card from a nairalink account.
 | narration (str) | (optional) |
 
 RESPONSE DATA
+```json
 	{"resource": "fund_virtual_card",
  	 "status" : "success",
  	 "data" : {"transaction_id": "", "card_id": "", "amount": "amount", "narration": "",
@@ -146,7 +153,7 @@ RESPONSE DATA
 	   	   "status": ""
           	  }
 	}
-
+```
 ### GET transactions on a virtual_card filtered by (currency/type/status)
 - **GET /v1/card/transactions/**
 This endpoints gets transactions on a virtual card filtered by either currency, type, datetime or status
@@ -161,6 +168,7 @@ Otherwise, it returns all transactions done a particular virtual card
 | limit_datetime (datetime) | (optional) datetime to limit the search (DD-MM-YYYY HH:MM:SS) |
 
 RESPONSE DATA
+```json
 	{"resource": "fund_virtual_card",
  	 "status" : "success",
  	 "data" : [{"transaction_id": "", "card_id": "", "amount": "amount",
@@ -176,7 +184,7 @@ RESPONSE DATA
            	    "datetime_of_transaction": <datetime>, "status": "successful"
           	   }]
 	}
-
+```
 
 ## CARD TABLE
 | Fields | Data type | required | default | primary key | foriegn key | index |
