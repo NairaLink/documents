@@ -24,7 +24,8 @@ Snippets of card endpoints
 | name_on_card (str) | (required) _delimited by whitespace_ |
 | PIN (str) | (required) _four digits_ |
 
-RESPONSE DATA
+* RESPONSE DATA
+
 {"resource": "create_virtual_card",
  "status" : "success",
  "data" : {"card_id": "", "card_brand": "VISA", "card_currency": "NGN",
@@ -42,7 +43,8 @@ RESPONSE DATA
 | -----------   | ---------------------- |
 | card_currency (str) | (optional) NGN, USD |
 
-RESPONSE DATA
+* RESPONSE DATA
+
 {"resource": "list_virtual_card",
  "status" : "success",
  "data" : [{"card_id": "", "card_brand": "VISA", "card_currency": "NGN",
@@ -62,7 +64,7 @@ RESPONSE DATA
 - **GET /v1/card/:card_id**
 * This endpoint retrieves the details of a virtual card with card_id specified
 
-RESPONSE DATA
+* RESPONSE DATA
 {"resource": "get_virtual_card",
  "status" : "success",
  "data" : {"card_id": "", "card_brand": "VISA", "card_currency": "NGN",
@@ -82,7 +84,8 @@ To block/unblock a card
 | card_id (str) | (required) |
 | status (str) | (required) |
 
-RESPONSE DATA
+* RESPONSE DATA
+
 {"resource": "change_virtual_card_status",
  "status" : "success",
  "data" : {"card_id": "", "status": "new_status",
@@ -99,7 +102,8 @@ To change card PIN
 | card_id (str) | (required) |
 | PIN (str) | (required) |
 
-RESPONSE DATA
+* RESPONSE DATA
+
 {"resource": "change_virtual_card_PIN",
  "status" : "success",
  "data" : {"card_id": "", "PIN": "new_PIN",
@@ -116,7 +120,8 @@ This endpoint deletes a card and changes its status to terminated
 | -----------   | ---------------------- |
 | card_id (str) | (required) |
 
-RESPONSE DATA
+* RESPONSE DATA
+
 {"resource": "delete_virtual_card",
  "status" : "success",
  "data" : {"card_id": "", "status": "terminated",
@@ -138,7 +143,8 @@ This endpoint funds a virtual card from a nairalink account.
 | currency (str) | (required) NGN, USD |
 | narration (str) | (optional) |
 
-RESPONSE DATA
+* RESPONSE DATA
+
 {"resource": "fund_virtual_card",
  "status" : "success",
  "data" : {"transaction_id": "", "card_id": "", "amount": "amount", "narration": "",
@@ -160,7 +166,8 @@ Otherwise, it returns all transactions done a particular virtual card
 | status (str) | (optional) either failed or successful transactions |
 | limit_datetime (datetime) | (optional) datetime to limit the search (DD-MM-YYYY HH:MM:SS) |
 
-RESPONSE DATA
+* RESPONSE DATA
+
 {"resource": "fund_virtual_card",
  "status" : "success",
  "data" : [{"transaction_id": "", "card_id": "", "amount": "amount",
